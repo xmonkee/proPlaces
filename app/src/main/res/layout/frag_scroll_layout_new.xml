@@ -127,7 +127,7 @@
         <LinearLayout
             android:id="@+id/details_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             >
 
@@ -247,6 +247,7 @@
                             android:gravity="top"
                             android:singleLine="true"
                             android:textSize="14sp"
+                            android:visibility="gone"
 
 
                             />
@@ -256,9 +257,17 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_margin="10dp"
-                            android:layout_weight="80">
+                            android:layout_weight="80"
+                            android:visibility="gone"
+                            >
 
                         </View>
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:id="@+id/text_category"
+                           android:text=""
+                           />
 
 
                     </LinearLayout>

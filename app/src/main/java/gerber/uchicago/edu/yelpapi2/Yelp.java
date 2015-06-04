@@ -1,6 +1,5 @@
 package gerber.uchicago.edu.yelpapi2;
 
-import gerber.uchicago.edu.YelpResultsData;
 import com.google.gson.Gson;
 
 import org.scribe.builder.ServiceBuilder;
@@ -9,6 +8,8 @@ import org.scribe.model.Response;
 import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
+
+import gerber.uchicago.edu.YelpResultsData;
 
 /**
  * Created by yiqin on 5/31/15.
@@ -57,8 +58,6 @@ public class Yelp {
         OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
 
         request.addQuerystringParameter("location", city);
-        //TODO: set category here.
-        request.addQuerystringParameter("category", "restaurants");
         request.addQuerystringParameter("term", searchTerm);
         request.addQuerystringParameter("limit", "20");
 

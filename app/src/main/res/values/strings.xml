@@ -1,6 +1,31 @@
 <resources>
     <string name="app_name">People and Places</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="yelp_chicago">
+       <item>active|Sports</item>
+       <item>arts|Arts</item>
+       <item>auto|Other</item>
+       <item>beautysvc|Services</item>
+       <item>education|Other</item>
+       <item>eventservices|Services</item>
+       <item>financialservices|Services</item>
+       <item>food|Food</item>
+       <item>health|Other</item>
+       <item>homeservices|Services</item>
+       <item>hotelstravel|Travel</item>
+       <item>localflavor|Travel</item>
+       <item>localservices|Services</item>
+       <item>massmedia|Culture</item>
+       <item>nightlife|Nightlife</item>
+       <item>pets|Nature</item>
+       <item>professional|Services</item>
+       <item>publicservicesgovt|Services</item>
+       <item>realestate|Shopping</item>
+       <item>religiousorgs|Culture</item>
+       <item>restaurants|Food</item>
+       <item>shopping|Shopping</item>
+    </string-array>
+
 </resources>

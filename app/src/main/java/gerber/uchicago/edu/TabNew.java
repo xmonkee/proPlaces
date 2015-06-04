@@ -38,12 +38,11 @@ import gerber.uchicago.edu.yelpapi2.Yelp;
 
 
 
-/**
- * Created by Edwin on 15/02/2015.
- */
 public class TabNew extends Fragment {
 
+    private MainActivity mainActivity;
 
+    private CategoryManger categoryManger;
     //views corresponding to those in our layout
     private ScrollView mRootViewGroup;
     private EditText mNameField, mCityField, mAddressField, mPhoneField, mYelpField;
@@ -52,6 +51,7 @@ public class TabNew extends Fragment {
     private CheckBox mCheckFavorite;
     private View mViewFavorite;
     private ImageView mPhotoView;
+    private TextView mCategory;
 
     //the restaurant passed into this activity during edit operation
     private Restaurant mRestaurant;
@@ -77,6 +77,8 @@ public class TabNew extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mainActivity = (MainActivity) getActivity();
+        categoryManger = new CategoryManger(getActivity());
         View view =inflater.inflate(R.layout.frag_scroll_layout_new,container,false);
 
         // No Adapter now...
@@ -120,7 +122,7 @@ public class TabNew extends Fragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check to see if required fields are populated - this is a constraint in the db
+                //check to see if required fields are populated
                 if (mCityField.getText().toString().equals("") || mCityField.getText().toString().equals("")) {
                     Toast toast = Toast.makeText(getActivity(),
                             "You must populate Search Name and Search City fields",
@@ -160,8 +162,7 @@ public class TabNew extends Fragment {
 
                     }
 
-                    // TODO: after clicking the save button, what to do?
-                    // getActivity().finish();
+                    mainActivity.goToTab(0);
 
 
                 }
@@ -223,6 +224,8 @@ public class TabNew extends Fragment {
         //if this is a new record then set the save button to disabled and extract button to gone
         mSaveButton.setEnabled(false);
         mExtractButton.setVisibility(View.GONE);
+
+        mCategory = (TextView) view.findViewById(R.id.text_category);
 
 
 
@@ -493,7 +496,7 @@ public class TabNew extends Fragment {
 
         }
 
-    }// end YelpSearchTask
+    }
 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -510,6 +513,7 @@ public class TabNew extends Fragment {
                         mAddressField.setText(biz.location.address.get(0));
                         mPhoneField.setText(PhoneNumberUtils.formatNumber(biz.phone));
                         mYelpField.setText(biz.url);
+                        mCategory.setText(categoryManger.getCategoryFromYelpCat(biz.categories.get(0).get(1)));
 
                     } catch (Exception e) {
                         e.printStackTrace();
